@@ -1,0 +1,46 @@
+{
+  "name": "transpay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.2",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node scripts/start.mjs",
+    "worker": "tsx src/worker/index.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "stellar:bootstrap": "tsx scripts/bootstrap-accounts.ts",
+    "evidence:d1": "tsx scripts/evidence-d1.ts",
+    "evidence:d2": "tsx scripts/evidence-d2.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "start:next": "next start"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^13.1.0",
+    "@tanstack/react-query": "^5.62.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.0",
+    "next": "^15.1.0",
+    "postgres": "^3.4.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsx": "^4.19.2",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "drizzle-kit": "^0.30.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=22 <25",
+    "pnpm": ">=10"
+  }
+}

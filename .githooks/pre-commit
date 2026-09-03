@@ -1,0 +1,24 @@
+#!/bin/sh
+# Secret guardrail. A public repo plus Stellar keypairs in env means one slip
+# wrecks the whole submission. No gitleaks, to avoid adding a dependency; this
+# only blocks the two things that actually exist in this project.
+fail=0
+
+# 1. Stellar seed key: S + 55 base32 characters
+if git diff --cached -U0 | grep -nE '^\+.*\bS[A-Z2-7]{55}\b' >/dev/null 2>&1; then
+  echo "pre-commit: BLOCKED — a Stellar seed key (S…) was found in the diff." >&2
+  git diff --cached -U0 --name-only | while read f; do
+    git diff --cached -U0 -- "$f" | grep -qE '^\+.*\bS[A-Z2-7]{55}\b' && echo "  → $f" >&2
+  done
+  fail=1
+fi
+
+# 2. Real env files (not .example)
+for f in $(git diff --cached --name-only); do
+  case "$f" in
+    .env|.env.local|.env.secrets|.env.*.local)
+      echo "pre-commit: BLOCKED — $f must not be committed." >&2; fail=1 ;;
+  esac
+done
+
+[ "$fail" -eq 0 ] || { echo "pre-commit: fix it and commit again, or use --no-verify if you are sure." >&2; exit 1; }
