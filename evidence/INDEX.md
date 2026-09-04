@@ -6,15 +6,15 @@ numbers with a fresh, self-consistent set.
 
 ## Start here (newest run of each deliverable)
 
-- **D1 — transfer orders:** [`evidence/d1/d1-20260903T081003Z-21f8/d1-orders.md`](d1/d1-20260903T081003Z-21f8/d1-orders.md) — 10/10 pass
-- **D2 — settlements:** [`evidence/d2/d2-20260903T081009Z-e81c/d2-summary.md`](d2/d2-20260903T081009Z-e81c/d2-summary.md) — positive 10/10 · negative 5/5 · ledger reconciliation exact
+- **D1 — transfer orders:** [`evidence/d1/d1-20260903T140328Z-bdfe/d1-orders.md`](d1/d1-20260903T140328Z-bdfe/d1-orders.md) — 10/10 pass (via HTTP API)
+- **D2 — settlements:** [`evidence/d2/d2-20260903T140339Z-9eb3/d2-summary.md`](d2/d2-20260903T140339Z-9eb3/d2-summary.md) — positive 10/10 · negative 5/5 · ledger reconciliation exact
 
 ## Every run
 
 | Deliverable | Run ID | Finished (UTC) | Result | Overall | Folder |
 | --- | --- | --- | --- | --- | --- |
-| D2 | d2-20260903T081009Z-e81c | 2026-09-03 08:13:08Z | positive 10/10 · negative 5/5 · ledger reconciliation exact | PASS | `evidence/d2/d2-20260903T081009Z-e81c/` |
-| D1 | d1-20260903T081003Z-21f8 | 2026-09-03 08:10:03Z | 10/10 pass | PASS | `evidence/d1/d1-20260903T081003Z-21f8/` |
+| D2 | d2-20260903T140339Z-9eb3 | 2026-09-03 14:07:38Z | positive 10/10 · negative 5/5 · ledger reconciliation exact | PASS | `evidence/d2/d2-20260903T140339Z-9eb3/` |
+| D1 | d1-20260903T140328Z-bdfe | 2026-09-03 14:03:29Z | 10/10 pass (via HTTP API) | PASS | `evidence/d1/d1-20260903T140328Z-bdfe/` |
 
 ## Why one folder per run
 

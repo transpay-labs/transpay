@@ -9,7 +9,9 @@
  * Test data is isolated by DATE: every order/counter in the tests uses a day in
  * 2099 or 2019, so it never touches another lane's evidence data.
  */
+import 'dotenv/config'
 import { sql } from 'drizzle-orm'
+import postgres from 'postgres'
 import { db } from '@/src/db/client'
 import {
   CORRIDORS,
@@ -124,10 +126,31 @@ const STATEMENTS: string[] = [
 
 let ready: Promise<void> | null = null
 
+/**
+ * Run the DDL on a connection of its own, with server notices silenced.
+ *
+ * Every statement above is idempotent, so on a database that already has the
+ * schema Postgres answers each one with
+ * `NOTICE: relation "..." already exists, skipping` — dozens of lines that look
+ * like errors in the test output but are exactly the intended no-op. `onnotice`
+ * can only be set when a client is created, and the application's pool
+ * (src/db/client.ts) must keep its default behaviour, so schema setup gets its
+ * own short-lived client and closes it again.
+ */
+async function applyDdl(): Promise<void> {
+  const url = process.env.DATABASE_URL
+  if (!url) throw new Error('DATABASE_URL is not set — see .env.example')
+
+  const client = postgres(url, { max: 1, onnotice: () => {} })
+  try {
+    for (const stmt of STATEMENTS) await client.unsafe(stmt)
+  } finally {
+    await client.end({ timeout: 5 })
+  }
+}
+
 export function ensureSchema(): Promise<void> {
-  ready ??= (async () => {
-    for (const stmt of STATEMENTS) await db.execute(sql.raw(stmt))
-  })()
+  ready ??= applyDdl()
   return ready
 }
 

@@ -1,0 +1,831 @@
+{
+  "deliverable": "d1",
+  "runId": "d1-20260903T140328Z-bdfe",
+  "startedAt": "2026-09-03T14:03:28.327Z",
+  "finishedAt": "2026-09-03T14:03:29.999Z",
+  "headline": "10/10 pass (via HTTP API)",
+  "pass": true,
+  "target": 10,
+  "passed": 10,
+  "corridor": "PHP",
+  "actor": "user",
+  "client": "script:evidence-d1",
+  "transport": "http",
+  "baseUrl": "http://localhost:3000",
+  "httpRequests": 50,
+  "httpTimeMs": 1628,
+  "wallClockSeconds": 1.672,
+  "endpoints": [
+    {
+      "step": "create",
+      "method": "POST",
+      "route": "/api/orders",
+      "expectedStatus": 201
+    },
+    {
+      "step": "confirm_quote",
+      "method": "POST",
+      "route": "/api/orders/[token]/confirm-quote",
+      "expectedStatus": 200
+    },
+    {
+      "step": "recipient",
+      "method": "POST",
+      "route": "/api/orders/[token]/recipient",
+      "expectedStatus": 200
+    },
+    {
+      "step": "deposit_reference",
+      "method": "POST",
+      "route": "/api/orders/[token]/deposit-reference",
+      "expectedStatus": 200
+    },
+    {
+      "step": "read_back",
+      "method": "GET",
+      "route": "/api/orders/[token]",
+      "expectedStatus": 200
+    }
+  ],
+  "ordersInDatabaseNotInThisRun": 0,
+  "averageCreateToConfirmSeconds": 0.046,
+  "cases": [
+    {
+      "index": 1,
+      "referenceId": "TP-PHP-20260903-0001",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "25.00",
+      "storedUsdAmount": "25.0000000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.2500000",
+      "phpEstimate": "1398.38",
+      "expectedFeeUsd": "0.2500000",
+      "expectedPhpEstimate": "1398.38",
+      "quotedAt": "2026-09-03T14:03:28.452Z",
+      "quoteExpiresAt": "2026-09-03T14:18:28.452Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:28.796Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Maria Santos",
+        "bankName": "BDO Unibank",
+        "bankCode": "BNORPHMM",
+        "accountNumber": "004561230011"
+      },
+      "depositReference": "DEP-PHP-20260903-0001-VSKK9BH8",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 159
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 324
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 328
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 321
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 11
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "25.0000000",
+        "feeUsd": "0.2500000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "1398.38",
+        "accountNumberMasked": "••••0011",
+        "depositReference": "DEP-PHP-20260903-0001-VSKK9BH8"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 2,
+      "referenceId": "TP-PHP-20260903-0002",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "40.50",
+      "storedUsdAmount": "40.5000000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.4050000",
+      "phpEstimate": "2265.37",
+      "expectedFeeUsd": "0.4050000",
+      "expectedPhpEstimate": "2265.37",
+      "quotedAt": "2026-09-03T14:03:29.491Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.491Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.509Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Jose Rivera",
+        "bankName": "Bank of the Philippine Islands",
+        "bankCode": "BOPIPHMM",
+        "accountNumber": "008812457720"
+      },
+      "depositReference": "DEP-PHP-20260903-0002-1XPHGRA6",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 15
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 16
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 16
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 14
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "40.5000000",
+        "feeUsd": "0.4050000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "2265.37",
+        "accountNumberMasked": "••••7720",
+        "depositReference": "DEP-PHP-20260903-0002-1XPHGRA6"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 3,
+      "referenceId": "TP-PHP-20260903-0003",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "132.75",
+      "storedUsdAmount": "132.7500000",
+      "fxRate": "56.5000000",
+      "feeUsd": "1.3275000",
+      "phpEstimate": "7425.37",
+      "expectedFeeUsd": "1.3275000",
+      "expectedPhpEstimate": "7425.37",
+      "quotedAt": "2026-09-03T14:03:29.561Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.561Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.575Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Angelica Dela Cruz",
+        "bankName": "Metropolitan Bank & Trust Co.",
+        "bankCode": "MBTCPHMM",
+        "accountNumber": "013300998812"
+      },
+      "depositReference": "DEP-PHP-20260903-0003-0ESXXPBE",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 12
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 12
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 17
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "132.7500000",
+        "feeUsd": "1.3275000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "7425.37",
+        "accountNumberMasked": "••••8812",
+        "depositReference": "DEP-PHP-20260903-0003-0ESXXPBE"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 4,
+      "referenceId": "TP-PHP-20260903-0004",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "6.25",
+      "storedUsdAmount": "6.2500000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.0625000",
+      "phpEstimate": "349.59",
+      "expectedFeeUsd": "0.0625000",
+      "expectedPhpEstimate": "349.59",
+      "quotedAt": "2026-09-03T14:03:29.622Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.622Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.633Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Ramon Bautista",
+        "bankName": "Land Bank of the Philippines",
+        "bankCode": "TLBPPHMM",
+        "accountNumber": "019745003366"
+      },
+      "depositReference": "DEP-PHP-20260903-0004-2C1H2PT7",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 10
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 13
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 7
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "6.2500000",
+        "feeUsd": "0.0625000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "349.59",
+        "accountNumberMasked": "••••3366",
+        "depositReference": "DEP-PHP-20260903-0004-2C1H2PT7"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 5,
+      "referenceId": "TP-PHP-20260903-0005",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "500.00",
+      "storedUsdAmount": "500.0000000",
+      "fxRate": "56.5000000",
+      "feeUsd": "5.0000000",
+      "phpEstimate": "27967.50",
+      "expectedFeeUsd": "5.0000000",
+      "expectedPhpEstimate": "27967.50",
+      "quotedAt": "2026-09-03T14:03:29.674Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.674Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.687Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Cristina Villanueva",
+        "bankName": "Philippine National Bank",
+        "bankCode": "PNBMPHMM",
+        "accountNumber": "010288114509"
+      },
+      "depositReference": "DEP-PHP-20260903-0005-TTTWRGQ7",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 11
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 9
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "500.0000000",
+        "feeUsd": "5.0000000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "27967.50",
+        "accountNumberMasked": "••••4509",
+        "depositReference": "DEP-PHP-20260903-0005-TTTWRGQ7"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 6,
+      "referenceId": "TP-PHP-20260903-0006",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "77.77",
+      "storedUsdAmount": "77.7700000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.7777000",
+      "phpEstimate": "4350.06",
+      "expectedFeeUsd": "0.7777000",
+      "expectedPhpEstimate": "4350.06",
+      "quotedAt": "2026-09-03T14:03:29.724Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.724Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.737Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Eduardo Mendoza",
+        "bankName": "Security Bank Corporation",
+        "bankCode": "SETCPHMM",
+        "accountNumber": "000045619982"
+      },
+      "depositReference": "DEP-PHP-20260903-0006-NEZRVX33",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 10
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 13
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 14
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 7
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "77.7700000",
+        "feeUsd": "0.7777000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "4350.06",
+        "accountNumberMasked": "••••9982",
+        "depositReference": "DEP-PHP-20260903-0006-NEZRVX33"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 7,
+      "referenceId": "TP-PHP-20260903-0007",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "15.10",
+      "storedUsdAmount": "15.1000000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.1510000",
+      "phpEstimate": "844.62",
+      "expectedFeeUsd": "0.1510000",
+      "expectedPhpEstimate": "844.62",
+      "quotedAt": "2026-09-03T14:03:29.781Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.781Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.793Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Lorna Aquino",
+        "bankName": "UnionBank of the Philippines",
+        "bankCode": "UBPHPHMM",
+        "accountNumber": "109933450077"
+      },
+      "depositReference": "DEP-PHP-20260903-0007-3YW6W4R9",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 9
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "15.1000000",
+        "feeUsd": "0.1510000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "844.62",
+        "accountNumberMasked": "••••0077",
+        "depositReference": "DEP-PHP-20260903-0007-3YW6W4R9"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 8,
+      "referenceId": "TP-PHP-20260903-0008",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "260.90",
+      "storedUsdAmount": "260.9000000",
+      "fxRate": "56.5000000",
+      "feeUsd": "2.6090000",
+      "phpEstimate": "14593.44",
+      "expectedFeeUsd": "2.6090000",
+      "expectedPhpEstimate": "14593.44",
+      "quotedAt": "2026-09-03T14:03:29.833Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.833Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.845Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Benigno Ocampo",
+        "bankName": "Rizal Commercial Banking Corp.",
+        "bankCode": "RCBCPHMM",
+        "accountNumber": "450012876341"
+      },
+      "depositReference": "DEP-PHP-20260903-0008-S7KAXMAW",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 10
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 16
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 13
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "260.9000000",
+        "feeUsd": "2.6090000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "14593.44",
+        "accountNumberMasked": "••••6341",
+        "depositReference": "DEP-PHP-20260903-0008-S7KAXMAW"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 9,
+      "referenceId": "TP-PHP-20260903-0009",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "92.45",
+      "storedUsdAmount": "92.4500000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.9245000",
+      "phpEstimate": "5171.19",
+      "expectedFeeUsd": "0.9245000",
+      "expectedPhpEstimate": "5171.19",
+      "quotedAt": "2026-09-03T14:03:29.895Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.895Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.906Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Imelda Reyes",
+        "bankName": "China Banking Corporation",
+        "bankCode": "CHBKPHMM",
+        "accountNumber": "201778334455"
+      },
+      "depositReference": "DEP-PHP-20260903-0009-GTJVQMVC",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 9
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 10
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 9
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 6
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "92.4500000",
+        "feeUsd": "0.9245000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "5171.19",
+        "accountNumberMasked": "••••4455",
+        "depositReference": "DEP-PHP-20260903-0009-GTJVQMVC"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    },
+    {
+      "index": 10,
+      "referenceId": "TP-PHP-20260903-0010",
+      "status": "awaiting_deposit",
+      "requestedUsdAmount": "3.99",
+      "storedUsdAmount": "3.9900000",
+      "fxRate": "56.5000000",
+      "feeUsd": "0.0399000",
+      "phpEstimate": "223.18",
+      "expectedFeeUsd": "0.0399000",
+      "expectedPhpEstimate": "223.18",
+      "quotedAt": "2026-09-03T14:03:29.944Z",
+      "quoteExpiresAt": "2026-09-03T14:18:29.944Z",
+      "quoteTtlSeconds": 900,
+      "confirmedAt": "2026-09-03T14:03:29.957Z",
+      "confirmationEventActor": "user",
+      "recipient": {
+        "fullName": "Rodrigo Pascual",
+        "bankName": "Development Bank of the Philippines",
+        "bankCode": "DBPHPHMM",
+        "accountNumber": "077611220034"
+      },
+      "depositReference": "DEP-PHP-20260903-0010-JTY80A61",
+      "http": [
+        {
+          "step": "create",
+          "method": "POST",
+          "route": "/api/orders",
+          "status": 201,
+          "ms": 10
+        },
+        {
+          "step": "confirm_quote",
+          "method": "POST",
+          "route": "/api/orders/[token]/confirm-quote",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "recipient",
+          "method": "POST",
+          "route": "/api/orders/[token]/recipient",
+          "status": 200,
+          "ms": 11
+        },
+        {
+          "step": "deposit_reference",
+          "method": "POST",
+          "route": "/api/orders/[token]/deposit-reference",
+          "status": 200,
+          "ms": 12
+        },
+        {
+          "step": "read_back",
+          "method": "GET",
+          "route": "/api/orders/[token]",
+          "status": 200,
+          "ms": 8
+        }
+      ],
+      "apiReadBack": {
+        "status": "awaiting_deposit",
+        "usdAmount": "3.9900000",
+        "feeUsd": "0.0399000",
+        "fxRate": "56.5000000",
+        "phpEstimate": "223.18",
+        "accountNumberMasked": "••••0034",
+        "depositReference": "DEP-PHP-20260903-0010-JTY80A61"
+      },
+      "checks": {
+        "fxQuoteCorrect": true,
+        "senderConfirmationRecorded": true,
+        "recordComplete": true
+      },
+      "failures": [],
+      "pass": true
+    }
+  ],
+  "files": [
+    "evidence/d1/d1-20260903T140328Z-bdfe/d1-orders.md",
+    "evidence/d1/d1-20260903T140328Z-bdfe/d1-orders.csv",
+    "evidence/d1/d1-20260903T140328Z-bdfe/d1-checks.csv",
+    "evidence/d1/d1-20260903T140328Z-bdfe/d1-http.csv",
+    "evidence/d1/d1-20260903T140328Z-bdfe/run.log.jsonl"
+  ]
+}

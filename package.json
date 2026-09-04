@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@10.18.2",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "dev": "next dev",
     "build": "next build",
     "start": "node scripts/start.mjs",

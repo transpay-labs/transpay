@@ -33,7 +33,8 @@ if (NETWORK !== 'testnet') {
 
 const DEFAULT_HORIZON = 'https://horizon-testnet.stellar.org'
 const rawHorizon = (process.env.STELLAR_HORIZON_URL?.trim() || DEFAULT_HORIZON).replace(/\/+$/, '')
-// Same reason as in src/stellar/config.ts: .env.example is missing the ".stellar" part.
+// Same guard as in src/stellar/config.ts: `horizon-testnet.org`, without ".stellar",
+// is a hand-typing mistake for a host that does not exist.
 const HORIZON_URL = new URL(rawHorizon).hostname === 'horizon-testnet.org' ? DEFAULT_HORIZON : rawHorizon
 
 const ASSET_CODE = (process.env.STELLAR_ASSET_CODE?.trim() || 'USDC').toUpperCase()

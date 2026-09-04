@@ -44,10 +44,15 @@ export const NETWORK_PASSPHRASE = Networks.TESTNET
 export const DEFAULT_HORIZON_URL = 'https://horizon-testnet.stellar.org'
 
 /**
- * .env.example (the file contract) says `https://horizon-testnet.org` — missing
- * `.stellar`, and that host does not exist. Fixing it silently would hide a config
- * error, throwing would block the whole team, so: self-heal plus a loud warning. Once
- * .env.example is fixed this branch never runs again.
+ * `.env.example` ships the correct host (`horizon-testnet.stellar.org`), so the
+ * branch below is not about this repository's own template any more.
+ *
+ * It stays as a guard against one specific typo that is easy to make by hand and
+ * costs an afternoon to diagnose: `horizon-testnet.org`, without `.stellar`, is a
+ * host that does not exist, and every Horizon call then fails with a DNS error
+ * that says nothing about the cause. Fixing it silently would hide a config
+ * mistake and throwing would block a running environment, so it self-heals and
+ * warns loudly. On a `.env` copied from `.env.example` it never runs.
  */
 function resolveHorizonUrl(): string {
   const raw = (process.env.STELLAR_HORIZON_URL?.trim() || DEFAULT_HORIZON_URL).replace(/\/+$/, '')
