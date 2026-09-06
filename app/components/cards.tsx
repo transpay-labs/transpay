@@ -10,6 +10,20 @@ import { useState } from 'react'
 import { REJECT_REASON_LABEL, countdown, dateTime, decimal, php, usd } from '@/app/_lib/format'
 import type { PublicOrder } from '@/app/_lib/types'
 
+/** The deck's completed-state hero: pale green disc with a check. */
+function SuccessHero({ headline }: { headline: string }) {
+  return (
+    <div className="card-hero">
+      <div className="disc">
+        <svg viewBox="0 0 24 24" aria-hidden focusable="false">
+          <path d="M4 12.5 9.5 18 20 7" />
+        </svg>
+      </div>
+      <div className="headline">{headline}</div>
+    </div>
+  )
+}
+
 /** Highlight box for the strings reviewers must cross-check (reference ID, tx hash). */
 export function RefBox({ label, value, hint }: { label: string; value: string; hint?: string }) {
   const [copied, setCopied] = useState(false)
@@ -124,9 +138,13 @@ export function SettlementCard({ order }: { order: PublicOrder }) {
   const confirmed = s.status === 'confirmed'
   return (
     <div className="bubble card">
-      <div className="card-title">
-        {confirmed ? 'On the ledger' : s.status === 'failed' ? 'Transaction failed' : 'Submitted to the ledger'}
-      </div>
+      {confirmed ? (
+        <SuccessHero headline="On the ledger" />
+      ) : (
+        <div className="card-title">
+          {s.status === 'failed' ? 'Transaction failed' : 'Submitted to the ledger'}
+        </div>
+      )}
       <RefBox
         label="Transaction hash"
         value={s.txHash}

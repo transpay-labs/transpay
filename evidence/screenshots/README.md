@@ -1,7 +1,9 @@
 # Screenshots — the request screens (Deliverable 1)
 
 Seven captures of one transfer order moving through every state of the chat
-flow, taken from the running application with Chrome at 2x, in order.
+flow, taken from the running application with Chrome at 2x, in order. They are
+captured from a **production build** (`pnpm build && pnpm start:next`), not the
+dev server, so no development overlay appears over the transcript.
 
 **The interface is simulated.** It is not WhatsApp, not Messenger, and not
 connected to any commercial messaging platform. Every screen carries that
@@ -27,11 +29,11 @@ record of the entire flow.
 
 | | |
 | --- | --- |
-| Reference ID | `TP-PHP-20260903-0027` |
-| Transaction | `7cc414d47a9bb91ad9454337c6421d7ff60f05480abaae7e7f78d145758acc2c` |
-| Ledger | 4484446 |
-| Explorer | https://stellar.expert/explorer/testnet/tx/7cc414d47a9bb91ad9454337c6421d7ff60f05480abaae7e7f78d145758acc2c |
-| Captured | 2026-09-03T14:30:23.620Z |
+| Reference ID | `TP-PHP-20260906-0004` |
+| Transaction | `cf6383f999878d6fda2c910f674decf1b24f20d2fb3ab9d3347969e85d274ce1` |
+| Ledger | 4527329 |
+| Explorer | https://stellar.expert/explorer/testnet/tx/cf6383f999878d6fda2c910f674decf1b24f20d2fb3ab9d3347969e85d274ce1 |
+| Captured | 2026-09-06T02:04:49Z |
 
 **This order is not one of the twenty in the D1 and D2 result tables, and its
 reference ID deliberately does not overlap with them.** A reference ID is unique

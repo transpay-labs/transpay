@@ -26,6 +26,16 @@ import { emptyRecipientDraft, useChatUi } from '@/app/store/chat-ui'
 import { Composer } from './Composer'
 import { DepositCard, QuoteCard, RecipientCard, RejectedCard, SettlementCard } from './cards'
 
+/** The TransPay "T" mark from the product deck: dark green stem, bright green flag. */
+function BrandMark() {
+  return (
+    <svg className="brand-mark" viewBox="0 0 40 40" aria-hidden focusable="false">
+      <path fill="#3f9a22" d="M4 4h20v9h-6v23h-9V13H4z" />
+      <path fill="#7dd143" d="M24 4h12l-9 9h-9z" />
+    </svg>
+  )
+}
+
 interface ThreadItem {
   key: string
   from: 'agent' | 'user'
@@ -278,9 +288,7 @@ export function ChatApp() {
       </div>
 
       <header className="header">
-        <div className="avatar" aria-hidden>
-          TP
-        </div>
+        <BrandMark />
         <div className="header-text">
           <div className="header-title">TransPay · USD → PHP</div>
           <div className="header-sub">

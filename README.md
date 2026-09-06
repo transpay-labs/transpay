@@ -37,6 +37,22 @@ Nothing in the evidence pack is typed by hand. Re-running the scripts
 regenerates every table, so a bug fix costs a re-run rather than an afternoon of
 screenshots.
 
+### Try the chat flow yourself — the deployed app
+
+**<https://web-production-3f65e.up.railway.app>**
+
+The same interface the screenshots were taken from, running the web service and
+the settlement worker. You can take an order all the way to a confirmed Stellar
+Testnet transaction there without installing anything.
+
+> **Orders you create there are NOT the evidence in this repository.** The
+> deployment runs a **completely separate corridor** — its own issuer, treasury
+> and payout float — from the one that produced the tables in `evidence/`. That
+> separation is deliberate and mandatory; section 6, limitation 5 explains why,
+> and what happened the one time it was violated. So the payout float balance
+> quoted in section 2 stays a valid audit of the ten settlements no matter how
+> many orders anyone runs on the deployed app.
+
 ---
 
 ## 1. What this is — and what it is **not**
@@ -101,7 +117,7 @@ database says.
 There is an even shorter check that covers the whole set. Open the payout float
 account on the block explorer:
 
-**<https://stellar.expert/explorer/testnet/account/GCQQLXJEP3DRCNY6JYUMYAR7BM6WU34XG42W2BPSYPVMORTTVY3VMPK3>**
+**<https://stellar.expert/explorer/testnet/account/GCQJHCQCSZXBQUEJTRXZ442PLA6E6GNTXXVYW44WMLYZLAR24SVB37SX>**
 
 Read its USDC balance and compare it with the total of the `USDC settled` column
 in the results table. They must be identical — currently **`730.1250000`**.
@@ -367,9 +383,9 @@ step 3.3.
 | `STELLAR_NETWORK` | Hard-blocked to `testnet`. Any other value and the app refuses to start. | `testnet` |
 | `STELLAR_HORIZON_URL` | Horizon API endpoint | `https://horizon-testnet.stellar.org` |
 | `STELLAR_ASSET_CODE` | Settlement asset code | `USDC` |
-| `STELLAR_USDC_ISSUER` | **Issuer of the test USDC — see the note below** | `GD3WPI6M3JVWL66FPNC5SAPTBF4SRFZ4VEBVYG22Q2EAVQFVH5WBH7HF` |
+| `STELLAR_USDC_ISSUER` | **Issuer of the test USDC — see the note below** | `GBXS3FGFQ6O24VR4HJI73IZVUKTPM3PG6ZKYVDLSTAKPOTHJVBXFQ4BX` |
 | `CORRIDOR_TREASURY_SECRET` | Secret key of the USD-side treasury; signs settlements | *(secret — not in this repo)* |
-| `CORRIDOR_PAYOUT_PUBLIC` | Public key of the PHP-side payout float | `GCQQLXJEP3DRCNY6JYUMYAR7BM6WU34XG42W2BPSYPVMORTTVY3VMPK3` |
+| `CORRIDOR_PAYOUT_PUBLIC` | Public key of the PHP-side payout float | `GCQJHCQCSZXBQUEJTRXZ442PLA6E6GNTXXVYW44WMLYZLAR24SVB37SX` |
 | `SETTLEMENT_POLL_INTERVAL_MS` | Worker scan interval | `3000` |
 | `SETTLEMENT_TIMEBOUNDS_SEC` | Validity window of a settlement transaction | `180` |
 | `EVIDENCE_BASE_URL` | Where `pnpm evidence:d1` sends its HTTP requests. Scripts only — the app itself never reads it. | `http://localhost:3000` |
@@ -385,7 +401,7 @@ creates its own issuer account and issues test USDC from it. Any asset called
 The issuer behind every transaction in this evidence pack is:
 
 ```
-GD3WPI6M3JVWL66FPNC5SAPTBF4SRFZ4VEBVYG22Q2EAVQFVH5WBH7HF
+GBXS3FGFQ6O24VR4HJI73IZVUKTPM3PG6ZKYVDLSTAKPOTHJVBXFQ4BX
 ```
 
 It is stated here so nobody has to guess. It also appears in every
