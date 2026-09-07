@@ -20,5 +20,6 @@ evidence/**/*.tmp
 # Original SOW: contains the builder email and the whole $5,000 budget table.
 # This repo is PUBLIC — reviewers already have the SOW via a private channel.
 # To include it, delete the line below (a conscious choice, not the default).
-TransPay.pdf
+docs/TransPay.pdf
+docs/TransPayOverview.pdf
 .env.secrets.*
