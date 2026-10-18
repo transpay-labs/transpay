@@ -39,7 +39,7 @@ screenshots.
 
 ### Try the chat flow yourself — the deployed app
 
-**<https://web-production-3f65e.up.railway.app>**
+**<https://transpay.notedee.space>**
 
 The same interface the screenshots were taken from, running the web service and
 the settlement worker. You can take an order all the way to a confirmed Stellar
